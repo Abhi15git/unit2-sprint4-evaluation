@@ -1,0 +1,39 @@
+.signup {
+  width: 400px;
+  margin: auto;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+form {
+  margin: auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+input {
+  padding-inline-start: 1rem;
+  border: none;
+  background-color: rgba(223, 223, 223, 0.562);
+  width: 200px;
+  height: 25px;
+  margin-bottom: 20px;
+}
+button {
+  background-color: rgb(2, 170, 2);
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: larger;
+  width: 250px;
+  height: 30px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+.signup p {
+  margin: auto;
+  width: 60%;
+}
+.signup a {
+  color: blue;
+}

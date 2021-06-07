@@ -1,0 +1,46 @@
+* {
+  margin: 0%;
+}
+main {
+  width: 90%;
+  margin: auto;
+}
+.parent {
+  padding: 50px;
+  margin: auto;
+  width: 90%;
+  height: 300px;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap: 20px;
+}
+
+.dishCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.3s;
+}
+.dishCard:hover {
+  box-shadow: 2px 2px 8px grey;
+  transform: scale(1.1);
+}
+.placeOrder {
+  width: fit-content;
+  margin: auto;
+  padding: 20px;
+}
+button {
+  color: white;
+  font-weight: bolder;
+  border: none;
+  background-color: rgba(1, 175, 1, 0.767);
+  width: 150px;
+  height: 40px;
+}
+.text {
+  color: black;
+  text-shadow: 2px 2px 5px white;
+  font-weight: bold;
+  font-size: large;
+}

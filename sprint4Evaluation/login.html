@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="loginsignup.css" />
+    <link rel="stylesheet" href="nav.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <ul class="navbar">
+            <li class="navItem">
+              <a href="index.html">Home</a>
+              <hr />
+            </li>
+            <li class="navItem">
+              <a href="login.html">LogIn</a>
+              <hr />
+            </li>
+            <li class="navItem">
+              <a href="signup.html">SignUp</a>
+              <hr />
+            </li>
+
+            <li class="navItem">
+              <a href="menu.html">Menu</a>
+              <hr />
+            </li>
+
+            <li class="navItem">
+              <a href="cart.html">Cart</a>
+              <hr />
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1>Sign Up Here</h1>
+
+        <div class="signup">
+          <form id="sign_up">
+            <input
+              type="email"
+              placeholder="Email address"
+              id="email"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Create Password"
+              id="pass"
+              required
+            />
+            <button onclick="signUp(event)">Create Your Account</button>
+          </form>
+          <p>Don't have an account? <a href="signup.html">SignUp Here</a></p>
+        </div>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+  <script>
+    function signUp(e) {
+      e.preventDefault();
+      let form = document.getElementById("sign_up");
+
+      let email = form.email.value;
+      let pass = form.pass.value;
+      if (!email || !pass) {
+        alert("Please provide necessary details");
+        return;
+      }
+
+      let arr;
+      if (!localStorage.getItem("users")) {
+        alert("User doesnt exist");
+        return;
+      } else {
+        arr = JSON.parse(localStorage.getItem("users"));
+        let flag = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (email == arr[i].email && pass == arr[i].pass) {
+            flag = 1;
+            break;
+          }
+        }
+        if (flag) {
+          alert("Login Successfull");
+        } else {
+          alert("User doesnt exist");
+          return;
+        }
+      }
+
+      window.location.href = "index.html";
+    }
+  </script>
+</html>

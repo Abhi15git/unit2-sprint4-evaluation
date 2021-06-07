@@ -1,0 +1,35 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+nav {
+  width: 100%;
+  background-color: rgba(247, 151, 117, 0.671);
+  display: flex;
+  justify-content: flex-end;
+  height: 25px;
+}
+.navbar {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+.navItem {
+  padding: 0px 30px;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+hr {
+  background-color: black;
+  border: none;
+  height: 1px;
+  width: 4px;
+  margin: auto;
+  transition: transform 0.5s;
+}
+.navItem:hover hr {
+  transform: scaleX(10);
+}

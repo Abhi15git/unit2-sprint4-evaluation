@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="loginsignup.css" />
+    <link rel="stylesheet" href="nav.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <ul class="navbar">
+            <li class="navItem">
+              <a href="index.html">Home</a>
+              <hr />
+            </li>
+            <li class="navItem">
+              <a href="login.html">LogIn</a>
+              <hr />
+            </li>
+            <li class="navItem">
+              <a href="signup.html">SignUp</a>
+              <hr />
+            </li>
+
+            <li class="navItem">
+              <a href="menu.html">Menu</a>
+              <hr />
+            </li>
+
+            <li class="navItem">
+              <a href="cart.html">Cart</a>
+              <hr />
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1>Sign Up Here</h1>
+
+        <div class="signup">
+          <form id="sign_up">
+            <input type="text" placeholder="Name" id="name" required />
+            <input
+              type="number"
+              placeholder="Mobile No."
+              id="mobile"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email address"
+              id="email"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Create Password"
+              id="pass"
+              required
+            />
+            <button onclick="signUp(event)">Create Your Account</button>
+          </form>
+          <p>Already have an account? <a href="login.html">Login Here</a></p>
+        </div>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+  <script>
+    function signUp(e) {
+      e.preventDefault();
+      let form = document.getElementById("sign_up");
+      let name = form.name.value;
+      let mobile = form.mobile.value;
+      let email = form.email.value;
+      let pass = form.pass.value;
+      if (!name || !mobile || !email || !pass) {
+        alert("Please provide necessary details");
+        return;
+      }
+      let obj = {
+        name,
+        mobile,
+        email,
+        pass,
+      };
+
+      let arr;
+      if (!localStorage.getItem("users")) {
+        arr = [];
+        arr.push(obj);
+        localStorage.setItem("users", JSON.stringify(arr));
+      } else {
+        arr = JSON.parse(localStorage.getItem("users"));
+        let flag = 0;
+        arr.forEach((element) => {
+          if (
+            email == element.email ||
+            Number(mobile) == Number(element.mobile)
+          ) {
+            flag = 1;
+          }
+        });
+        if (flag) {
+          alert("Email or Contact  already registered");
+          return;
+        } else {
+          arr.push(obj);
+
+          localStorage.setItem("users", JSON.stringify(arr));
+        }
+      }
+      alert("account created Successfully!");
+      window.location.href = "index.html";
+    }
+  </script>
+</html>

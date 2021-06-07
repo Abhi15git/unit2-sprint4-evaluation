@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="menu.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <ul class="navbar">
+            <li class="navItem">
+              <a href="index.html">Home </a>
+              <hr />
+            </li>
+            <li class="navItem">
+              <a href="login.html">LogIn</a>
+              <hr />
+            </li>
+            <li class="navItem">
+              <a href="signup.html">SignUp</a>
+              <hr />
+            </li>
+
+            <li class="navItem">
+              <a href="menu.html">Menu</a>
+              <hr />
+            </li>
+
+            <li class="navItem">
+              <a href="cart.html">Cart</a>
+              <hr />
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1>Cart Items</h1>
+        <div class="parent" id="parent"></div>
+        <div class="placeOrder" id="placeOrder"></div>
+      </main>
+    </div>
+  </body>
+  <script>
+    if (!localStorage.getItem("cart")) {
+      let parent = document.getElementById("parent");
+      parent.innerText = "";
+      parent.innerHTML = "<h1>Your Cart is Empty</h1>";
+    } else {
+      let arr = JSON.parse(localStorage.getItem("cart"));
+      let parent = document.getElementById("parent");
+      parent.innerText = "";
+      arr.forEach((element) => {
+        let div = document.createElement("div");
+        div.setAttribute("class", "dishCard");
+        div.style.background = `url(${element.image}) no-repeat`;
+        div.style.backgroundSize = "100% 100%";
+        let name = document.createElement("p");
+        name.innerText = element.name;
+        name.setAttribute("class", "text");
+        let price = document.createElement("p");
+        price.innerText = element.price;
+        price.setAttribute("class", "text");
+        let descrip = document.createElement("p");
+        descrip.innerText = `Description : ${element.descrip}`;
+        descrip.setAttribute("class", "text");
+        let time = document.createElement("p");
+        time.innerText = `Preparation Time ${element.time}`;
+        time.setAttribute("class", "text");
+
+        div.append(name, price, descrip, time);
+        parent.append(div);
+      });
+      let order = document.getElementById("placeOrder");
+      let button = document.createElement("button");
+      button.innerText = "Submit Order";
+      button.onclick = function () {
+        setTimeout(function () {
+          alert("Your order is accepted");
+        }, 1000);
+        setTimeout(function () {
+          alert("Your order is being cooked");
+        }, 5000);
+        setTimeout(function () {
+          alert("Your order is ready");
+        }, 8000);
+        setTimeout(function () {
+          alert("Order out for delivery");
+        }, 10000);
+        setTimeout(function () {
+          alert("Order Delivered");
+        }, 12000);
+      };
+      order.append(button);
+    }
+    function addToCart(el) {
+      let item;
+      if (!localStorage.getItem("cart")) item = [];
+      else {
+        item = JSON.parse(localStorage.getItem("cart"));
+      }
+      item.push(el);
+      localStorage.setItem("cart", JSON.stringify(item));
+      alert("item added to cart");
+    }
+  </script>
+</html>
